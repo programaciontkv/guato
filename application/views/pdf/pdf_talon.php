@@ -107,7 +107,7 @@
                   
                    <td colspan="2">
                     <label style="font-weight: normal;">
-                       <?php echo trim(ucwords(strtolower($factura->emi_dir_establecimiento_emisor)))?></td>
+                       <?php echo trim(ucwords(strtolower($factura->emp_direccion)))?></td>
                    </label>
                     
                 </tr>
@@ -115,7 +115,7 @@
                     <td colspan="2">
                      <?php echo ('Teléfono:') ?> 
                      <label style="font-weight: normal;">
-                          <?php echo ucwords(strtolower($factura->emi_telefono))?></td>
+                          <?php echo ucwords(strtolower($factura->emp_telefono))?></td>
                      </label>
                     
                     <th></th>
@@ -123,7 +123,7 @@
                 <tr>
                     <td colspan="2">Email: 
                             <label style="font-weight: normal;">
-                             <?php echo strtolower($factura->emi_email)?>
+                             <?php echo strtolower($factura->emp_email)?>
                             </label>
                     </td>
                     <th></th>
@@ -131,7 +131,7 @@
                 <tr>
                     <td colspan="2">Calificación artesanal: 
                             <label style="font-weight: normal;">
-                                080994
+                                153942
                             </label>
                     </td>
                     <th></th>
@@ -148,15 +148,17 @@
                             <label style="font-weight: normal;">
                                 <?php echo $factura->fac_numero?>
                             </label>
-                </td>
+
+                 </td>
                     <th></th>
                 </tr> 
                 <tr>
                     <td colspan="2">Fecha emision: 
                             <label style="font-weight: normal;">
                                 <?php echo $factura->fac_fecha_emision?>
-                    </label>
-                </td>
+                            </label>
+
+               </td>
                     <th></th>
                 </tr> 
                 <tr>
@@ -175,7 +177,6 @@
                                
                                 ?>
                             </label>   
-
                     </td>
                     <th></th>
                 </tr> 
@@ -210,8 +211,14 @@
                      Normal
                  </label>
              </td>
-                </tr>   
-                
+                </tr> 
+                <tr>
+                    <td colspan="2"> <?php echo utf8_encode('Factura :') ?>
+                        <label style="font-weight: normal;">
+                        <?php echo trim($factura->fac_numero)?>
+                       </label>
+                </td>
+                </tr>  
                   
             </table>
         </td>
@@ -291,7 +298,7 @@
                         <td id="inv" colspan="2" rowspan="4" valign="top" >
                             
                         </td>
-                        <td colspan="2"><strong>Subtotal 12%</strong></td>
+                        <td colspan="2"><strong>Subtotal <?php echo $t_iva ?>%:</strong></td>
                         <td class="numerico"><?php echo number_format($factura->fac_subtotal12,$dec)?></td>
                     </tr>
                     <tr>
@@ -315,7 +322,7 @@
                         <td class="numerico"><?php echo number_format($factura->fac_total_descuento,$dec)?></td>
                     </tr> -->
                     <tr>
-                        <td colspan="2"><strong>IVA 12%</strong></td>
+                        <td colspan="2"><strong>IVA <?php echo $t_iva ?>%:</strong></td>
                         <td class="numerico"><?php echo number_format($factura->fac_total_iva,$dec)?></td>
                     </tr>
                     <!-- <tr>
@@ -340,14 +347,7 @@
             
         </td>
     </tr>
-        <tr>
-        <td>
-            <h4>
-                <?php echo '*Este es un documento sin validez tributaria' ?>
-            </h4>
-            
-        </td>
-    </tr>
+        
 </table>
 
 <style type="text/css">
